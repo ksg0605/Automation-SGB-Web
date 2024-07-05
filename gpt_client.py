@@ -1,11 +1,10 @@
-import openai
+from openai import OpenAI
 
 class GPTClient:
     def __init__(self, api_key, model):
         self.api_key = api_key
         self.model = model
-        openai.api_key = self.api_key
-        self.client = openai(api_key=api_key)
+        self.client = OpenAI(api_key=api_key)
 
     def generate_response(self, system_input, user_input):
         response = self.client.chat.completion.create(
