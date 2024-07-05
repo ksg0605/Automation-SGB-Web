@@ -5,9 +5,10 @@ class GPTClient:
         self.api_key = api_key
         self.model = model
         openai.api_key = self.api_key
+        self.client = openai(api_key=api_key)
 
     def generate_response(self, system_input, user_input):
-        response = openai.ChatCompletion.create(
+        response = self.client.chat.completion.create(
             model=self.model,
             messages=[
                 {"role": "system", "content": system_input},
