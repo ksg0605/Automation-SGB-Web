@@ -14,7 +14,9 @@ class Spreadsheet:
     
     def update_cell(self, cell, value):
         self.sheet[cell].value = value
-        self.wb.save(self.file_path)
     
+    def save(self, output_path):
+        self.wb.save(output_path)
+        
     def get_max_row(self):
         return self.sheet.max_row
